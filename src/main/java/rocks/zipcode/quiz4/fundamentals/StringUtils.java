@@ -1,6 +1,8 @@
 package rocks.zipcode.quiz4.fundamentals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author leon on 21/12/2018.
@@ -81,11 +83,36 @@ public class StringUtils {
     }
 
     public static Boolean hasDuplicateConsecutiveCharacters(String str) {
-        return null;
+        boolean duplicate = false;
+        for (int i = 0; i < str.length() - 1; i++){
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                duplicate = true;
+                break;
+            }
+        }
+
+        return duplicate;
     }
 
     public static String removeConsecutiveDuplicateCharacters(String str) {
-        return null;
+        List<String> characterList = new ArrayList<>();
+       String result = "";
+        for(int i = 0; i < str.length(); i++){
+            characterList.add(String.valueOf(str.charAt(i)));
+        }
+        for(int i = 0; i < characterList.size() - 1; i++){
+            String checkedOne = characterList.get(i);
+            String checkedTwo = characterList.get(i+1);
+            String checkedThree = checkedTwo;
+            if (i != 0){
+                checkedThree = characterList.get(i - 1);
+            }
+            if(!checkedOne.equals(checkedTwo) && !checkedOne.equals(checkedThree)){
+                result += checkedOne;
+            }
+        }
+        result += characterList.get(characterList.size() - 1);
+        return result;
     }
 
     public static String invertCasing(String str) {
