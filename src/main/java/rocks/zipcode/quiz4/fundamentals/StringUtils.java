@@ -116,6 +116,14 @@ public class StringUtils {
     }
 
     public static String invertCasing(String str) {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == Character.toLowerCase(str.charAt(i))) {
+                builder.append(Character.toUpperCase(str.charAt(i)));
+            } else {
+                builder.append(Character.toLowerCase(str.charAt(i)));
+            }
+        }
+        return builder.toString();
     }
 }
